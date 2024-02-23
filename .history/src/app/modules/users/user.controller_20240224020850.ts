@@ -1,4 +1,4 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
+import { Request, RequestHandler, Response } from 'express';
 import { UserService } from './user.services';
 import status from 'http-status';
 import sendResponse from '../../../shared/sendResponse';
@@ -29,7 +29,6 @@ const createBuyer: RequestHandler = catchAsync(async (req: Request, res: Respons
         message: 'Buyer has created successfully', 
         data: result,
     })
-    next();
 }) 
 
 /* const getSingleUser = catchAsync(async (req: Request, res: Response) => {

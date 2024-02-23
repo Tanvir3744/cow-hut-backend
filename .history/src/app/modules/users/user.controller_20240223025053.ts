@@ -1,15 +1,16 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
+import { Request, RequestHandler, Response } from 'express';
 import { UserService } from './user.services';
 import status from 'http-status';
 import sendResponse from '../../../shared/sendResponse';
 import catchAsync from '../../../shared/catchAsync';
 
 
-// create seller controller along with user;
+
 const createSeller:RequestHandler = catchAsync(async (req: Request, res: Response) => {
     const { seller, ...data } = req.body;
-    console.log(data, "this is data from user controller")
+    console.log(seller, "this is sellers")
     const result = await UserService.createSeller(seller, data);
+    console.log(result, 'here is the logger information about result')
     sendResponse(res, {
         statusCode:status.OK ,
         success: true,
@@ -17,20 +18,6 @@ const createSeller:RequestHandler = catchAsync(async (req: Request, res: Respons
         data: result,
     });
 })
-
-// create buyer controller along with user;
-const createBuyer: RequestHandler = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const { buyer, ...data } = req.body;
-    const result = await UserService.createBuyer(buyer, data);
-
-    sendResponse(res, {
-        statusCode: status.OK,
-        success: true, 
-        message: 'Buyer has created successfully', 
-        data: result,
-    })
-    next();
-}) 
 
 /* const getSingleUser = catchAsync(async (req: Request, res: Response) => {
     const { id } = req.params;
@@ -83,5 +70,4 @@ const deleteUser = catchAsync(async (req: Request, res: Response) => {
 
 export const UserController = {
     createSeller,
-    createBuyer,
 }

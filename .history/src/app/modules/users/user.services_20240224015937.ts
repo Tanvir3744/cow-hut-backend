@@ -9,7 +9,6 @@ import config from '../../../config';
 import { IBuyer } from '../buyer/buyer.interface';
 import { Buyer } from '../buyer/buyer.models';
 
-// creating new seller along with user ;
 
 const createSeller = async (seller: ISeller, user: IUser): Promise<IUser | null> => {
   console.log(user, 'this is user')
@@ -59,9 +58,8 @@ const createSeller = async (seller: ISeller, user: IUser): Promise<IUser | null>
   return newUserAllData;
 }
 
-// creating new buyer along with user; 
 
-const createBuyer =async (buyer: IBuyer, user: IUser):Promise<IUser | null> => {
+const createBuyer =async (buyer: IBuyer, user: IUser) => {
   user.role = "buyer";
 
   if (!user.password) {
@@ -91,30 +89,18 @@ const createBuyer =async (buyer: IBuyer, user: IUser):Promise<IUser | null> => {
       throw new ApiError(BAD_REQUEST, 'User failed to create... Please Try Again!');
     };
 
-    // push new user into newUserAllData variable...
-    newUserAllData = createNewUser[0];
+    
 
 
-    // ending and committing transaction
-    await session.commitTransaction();
-    await session.endSession()
   } catch (error) {
     await session.abortTransaction();
     await session.endSession();
     throw error;
   }
 
-  // if user and buyer has been created successfully then populate this all data;
-  if (newUserAllData) {
-    newUserAllData = await User.findOne({ _id: newUserAllData._id }).populate({
-      path: 'buyer',
-    })
-  }
 
-  return newUserAllData;
+
 }
-
-
 
 /* const getSingleUser = async (id: string): Promise<IUser | null> => {
   const result = await User.findById(id)

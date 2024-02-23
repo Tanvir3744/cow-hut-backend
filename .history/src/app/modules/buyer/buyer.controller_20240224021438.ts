@@ -43,8 +43,8 @@ const updateBuyer = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id
     const updatedData = req.body
-    const result = await BuyerServices.updateBuyer( updatedData, id)
-    sendResponse<IBuyer>(res, {
+    const result = await BuyerServices.updateBuyer(id, updatedData)
+    sendResponse(res, {
       statusCode: OK,
       success: true,
       message: 'Buyers information has updated successfully',

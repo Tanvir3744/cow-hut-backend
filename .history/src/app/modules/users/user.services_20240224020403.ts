@@ -10,7 +10,6 @@ import { IBuyer } from '../buyer/buyer.interface';
 import { Buyer } from '../buyer/buyer.models';
 
 // creating new seller along with user ;
-
 const createSeller = async (seller: ISeller, user: IUser): Promise<IUser | null> => {
   console.log(user, 'this is user')
   user.role = 'seller';
@@ -60,8 +59,7 @@ const createSeller = async (seller: ISeller, user: IUser): Promise<IUser | null>
 }
 
 // creating new buyer along with user; 
-
-const createBuyer =async (buyer: IBuyer, user: IUser):Promise<IUser | null> => {
+const createBuyer =async (buyer: IBuyer, user: IUser) => {
   user.role = "buyer";
 
   if (!user.password) {
@@ -111,10 +109,9 @@ const createBuyer =async (buyer: IBuyer, user: IUser):Promise<IUser | null> => {
     })
   }
 
+
   return newUserAllData;
 }
-
-
 
 /* const getSingleUser = async (id: string): Promise<IUser | null> => {
   const result = await User.findById(id)

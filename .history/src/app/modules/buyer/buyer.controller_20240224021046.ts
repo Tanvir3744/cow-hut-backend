@@ -8,8 +8,6 @@ import sendResponse from '../../../shared/sendResponse'
 import { OK } from 'http-status'
 import { IBuyer } from './buyer.interface'
 
-
-
 const getSingleBuyer = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id
   const result = await BuyerServices.getSingleBuyer(id)
@@ -39,20 +37,18 @@ const getAllBuyer = catchAsync(
 )
 
 
-const updateBuyer = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
-    const id = req.params.id
-    const updatedData = req.body
-    const result = await BuyerServices.updateBuyer( updatedData, id)
+const updateBuyer = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const { id } = req.params;
+    const updatedData = req.body;
+    const result = await BuyerServices.updateBuyer(id, updatedData);
     sendResponse<IBuyer>(res, {
-      statusCode: OK,
-      success: true,
-      message: 'Buyers information has updated successfully',
-      data: result,
-    }),
-      next()
-  },
-);
+        statusCode: OK,
+        success: true,
+        message: 'Buyers information has updated successfully',
+        data: result,
+    });
+    next();
+});
 
 
 const deleteBuyer = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -69,6 +65,7 @@ const deleteBuyer = catchAsync(async (req: Request, res: Response, next: NextFun
 
 export const BuyerController = {
   getAllBuyer,
+  createBuyer,
   getSingleBuyer,
   deleteBuyer,
   updateBuyer,

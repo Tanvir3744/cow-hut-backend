@@ -4,15 +4,12 @@ import { ISeller } from '../seller/seller.interface'
 import { IUser} from './user.interface'
 import { User } from './user.model'
 import { Seller } from '../seller/seller.models';
-import status, { BAD_REQUEST } from 'http-status'
+import status from 'http-status'
 import config from '../../../config';
-import { IBuyer } from '../buyer/buyer.interface';
-import { Buyer } from '../buyer/buyer.models';
 
-// creating new seller along with user ;
 
-const createSeller = async (seller: ISeller, user: IUser): Promise<IUser | null> => {
-  console.log(user, 'this is user')
+const createSeller = async (user: IUser, seller: ISeller): Promise<IUser | null> => {
+  console.log(seller, 'line numebr 12')
   user.role = 'seller';
 
   if (!user.password) {
@@ -26,12 +23,14 @@ const createSeller = async (seller: ISeller, user: IUser): Promise<IUser | null>
     session.startTransaction();
 
     const newSeller = await Seller.create(seller, { session });
+    console.log(newSeller, 'this is new seller')
 
     if (!newSeller.length) {
       throw new ApiError(status.BAD_REQUEST, 'Failed to createSeller');
     }
 
     user.seller = newSeller[0];
+    console.log(user.seller, 'this is user dot seller')
 
     const newUser = await User.create([user], { session });
 
@@ -53,68 +52,12 @@ const createSeller = async (seller: ISeller, user: IUser): Promise<IUser | null>
   }
 
   if (newUserAllData) {
+    console.log(await User.findOne(newUserAllData._id), 'new user all data')
     newUserAllData = await User.findOne(newUserAllData._id).populate('seller');
   }
-  console.log(newUserAllData, "this is new user all data")
+  console.log(newUserAllData?.password, 'this is new user all data id -> ', newUserAllData?.id)
   return newUserAllData;
 }
-
-// creating new buyer along with user; 
-
-const createBuyer =async (buyer: IBuyer, user: IUser):Promise<IUser | null> => {
-  user.role = "buyer";
-
-  if (!user.password) {
-    user.password = config.default_buyer_pass as string;
-  }
-
-  let newUserAllData = null;
-  const session =await mongoose.startSession();
-  try {
-    session.startTransaction();
-
-    // creating new buyer 
-    const createNewBuyer = await Buyer.create([buyer], { session });
-    
-    //if buyer is failed to create;
-    if (!createBuyer.length) {
-      throw new ApiError(BAD_REQUEST, 'Buyer has failed to create');
-    }
-
-    //push new buyer data into user model ;
-    user.buyer = createNewBuyer[0];
-
-    const createNewUser = await User.create([user], { session });
-
-    // if creation of new user is fail for some reason 
-    if (!createNewUser.length) {
-      throw new ApiError(BAD_REQUEST, 'User failed to create... Please Try Again!');
-    };
-
-    // push new user into newUserAllData variable...
-    newUserAllData = createNewUser[0];
-
-
-    // ending and committing transaction
-    await session.commitTransaction();
-    await session.endSession()
-  } catch (error) {
-    await session.abortTransaction();
-    await session.endSession();
-    throw error;
-  }
-
-  // if user and buyer has been created successfully then populate this all data;
-  if (newUserAllData) {
-    newUserAllData = await User.findOne({ _id: newUserAllData._id }).populate({
-      path: 'buyer',
-    })
-  }
-
-  return newUserAllData;
-}
-
-
 
 /* const getSingleUser = async (id: string): Promise<IUser | null> => {
   const result = await User.findById(id)
@@ -190,5 +133,4 @@ const deleteUser = async (id: string) => {
 
 export const UserService = {
   createSeller,
-  createBuyer,
 }
