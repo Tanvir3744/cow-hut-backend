@@ -115,7 +115,7 @@ const createBuyer =async (buyer: IBuyer, user: IUser):Promise<IUser | null> => {
 }
 
 
-/* 
+
 const getAllUsers = async (
   paginationOptions: IpaginationOptions,
   filters: IUserFilters,
@@ -181,7 +181,7 @@ const updateUser = async (id: string, payload: Partial<IUser>):Promise<IUser | n
 const deleteUser = async (id: string) => {
   const result = await User.findByIdAndDelete(id);
   return result;
-}  */
+} 
 
 export const UserService = {
   createSeller,

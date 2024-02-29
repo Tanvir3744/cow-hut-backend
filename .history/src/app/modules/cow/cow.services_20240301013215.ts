@@ -77,7 +77,7 @@ const getAllCow = async (
       ? { $and: searchAndFilterCondition }
       : {}
 
-  const result = await Cows.find(whereCondition)
+  const result = await Cows.find(whereCondition).populate('seller')
     .sort(sortCondition)
     .skip(skip)
     .limit(limit)

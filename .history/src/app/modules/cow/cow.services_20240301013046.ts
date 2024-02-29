@@ -6,12 +6,11 @@ import { IpaginationOptions } from '../../../interface/IpaginationOptions'
 import { IGenericResponse } from '../../../shared/IGenericResponse'
 import { cowSearchableFields } from './cow.constants'
 import { PaginationHelper } from '../../../helper/paginationHelper'
-import { SortOrder } from 'mongoose'
-/* import mongoose, { SortOrder } from 'mongoose' */
+import mongoose, { SortOrder } from 'mongoose'
 
 
 const createCow = async (payload: ICow): Promise<ICow | null> => {
-  const result = await Cows.create(payload)
+  const result = await Cow.create(payload)
   if (!result) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'failed to create seller')
   }
@@ -77,11 +76,11 @@ const getAllCow = async (
       ? { $and: searchAndFilterCondition }
       : {}
 
-  const result = await Cows.find(whereCondition)
+  const result = await Cow.find(whereCondition)
     .sort(sortCondition)
     .skip(skip)
     .limit(limit)
-  const total = await Cows.countDocuments()
+  const total = await Cow.countDocuments()
   return {
     meta: {
       page,
@@ -93,14 +92,14 @@ const getAllCow = async (
 }
 
 const updateCow = async (id: string, payload: Partial<ICow>) => {
-  const result = await Cows.findByIdAndUpdate({ _id: id }, payload, {
+  const result = await Cow.findByIdAndUpdate({ _id: id }, payload, {
     new: true,
   })
   return result
 }
 
 const deleteCow = async (id: string) => {
-  const result = await Cows.findByIdAndDelete(id)
+  const result = await Cow.findByIdAndDelete(id)
   return result
 }
 

@@ -6,16 +6,6 @@
     "auditLog": "C:\\Users\\GWC IDB\\Desktop\\cow-hut Assigment\\logs\\winston\\successes\\.c6ae6e81727181cc07993b176951e9db71a449be-audit.json",
     "files": [
         {
-            "date": 1707574113031,
-            "name": "C:\\Users\\GWC IDB\\Desktop\\cow-hut Assigment\\logs\\winston\\successes\\cow-hut-2024-10-02-20-sucess.log",
-            "hash": "795f944edfe4c17ffdfc2100ea2611e9fecae65d18599f1defc608fe5936ddfd"
-        },
-        {
-            "date": 1707596088421,
-            "name": "C:\\Users\\GWC IDB\\Desktop\\cow-hut Assigment\\logs\\winston\\successes\\cow-hut-2024-11-02-02-sucess.log",
-            "hash": "237b0c5ca168bbe6591c77edb7b75d19095a1d59532ea83beb4082260165fa3d"
-        },
-        {
             "date": 1708031545143,
             "name": "C:\\Users\\GWC IDB\\Desktop\\cow-hut Assigment\\logs\\winston\\successes\\cow-hut-2024-16-02-03-sucess.log",
             "hash": "66e4cbeb05cbdec23cd52573a01313b318602b1ead6734eb063ea80d5f221136"
@@ -99,6 +89,26 @@
             "date": 1708718602705,
             "name": "C:\\Users\\GWC IDB\\Desktop\\cow-hut Assigment\\logs\\winston\\successes\\cow-hut-2024-24-02-02-sucess.log",
             "hash": "0f7fe3f81ec5fe1c4dbff243f7ae09eb19210526a9e910d284b4811fd9eb144d"
+        },
+        {
+            "date": 1709064421777,
+            "name": "C:\\Users\\GWC IDB\\Desktop\\cow-hut Assigment\\logs\\winston\\successes\\cow-hut-2024-28-02-02-sucess.log",
+            "hash": "36f7815d6aa84a433b20e5bf5ef7737f028ab2dc8df0fa41cbbcb49ff53ee5a3"
+        },
+        {
+            "date": 1709222327165,
+            "name": "C:\\Users\\GWC IDB\\Desktop\\cow-hut Assigment\\logs\\winston\\successes\\cow-hut-2024-29-02-21-sucess.log",
+            "hash": "7692207e7cbbdf8fec7e825ead0e22a9bf85910df469f655f567763fc7febba7"
+        },
+        {
+            "date": 1709222402649,
+            "name": "C:\\Users\\GWC IDB\\Desktop\\cow-hut Assigment\\logs\\winston\\successes\\cow-hut-2024-29-02-22-sucess.log",
+            "hash": "4426af36bf271455df47a7bc63854647d7c1fbc2ee28159d2469775c3b022cb5"
+        },
+        {
+            "date": 1709233851381,
+            "name": "C:\\Users\\GWC IDB\\Desktop\\cow-hut Assigment\\logs\\winston\\successes\\cow-hut-2024-01-03-01-sucess.log",
+            "hash": "319ccff8983a28d98d7fe2a8f84e54bf6fabfae6d1c69c26313929a2e04626ca"
         }
     ],
     "hashType": "sha256"

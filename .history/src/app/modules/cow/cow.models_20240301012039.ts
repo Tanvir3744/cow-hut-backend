@@ -59,7 +59,7 @@ const cowSchema = new Schema(
     },
     seller: {
       type: Schema.Types.ObjectId,
-      ref: "Cows",
+      ref: "Cow",
       required: true, 
     }
   },

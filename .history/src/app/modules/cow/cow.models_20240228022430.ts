@@ -59,7 +59,7 @@ const cowSchema = new Schema(
     },
     seller: {
       type: Schema.Types.ObjectId,
-      ref: "Cows",
+      ref: "Cow",
       required: true, 
     }
   },
@@ -71,4 +71,4 @@ const cowSchema = new Schema(
   },
 )
 
-export const Cows = model<ICow, CowModel>('Cows', cowSchema);
+export const Cow = model<ICow, CowModel>('Cows', cowSchema);

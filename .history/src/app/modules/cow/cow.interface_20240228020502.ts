@@ -2,7 +2,6 @@
 import { Types } from "mongoose" */
 
 import { Model, Types } from "mongoose"
-import { ISeller } from "../seller/seller.interface";
 
 export type ICow = {
     name: string, 
