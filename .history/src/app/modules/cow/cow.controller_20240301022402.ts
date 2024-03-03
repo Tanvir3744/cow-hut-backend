@@ -11,7 +11,7 @@ import { paginationData } from '../../../shared/filteringData'
 const createCow = catchAsync(async (req: Request, res: Response) => {
   const { ...data } = req.body
   const result = await CowServices.createCow(data)
-
+  await result.populate("seller").execPopulate();
   console.log(result, 'cow controller console.log')
 
   sendResponse(res, {

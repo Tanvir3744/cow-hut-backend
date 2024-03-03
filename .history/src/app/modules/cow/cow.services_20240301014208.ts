@@ -12,7 +12,6 @@ import { SortOrder } from 'mongoose'
 
 const createCow = async (payload: ICow): Promise<ICow | null> => {
   const result = await Cows.create(payload)
-  await result.populate('seller')
   if (!result) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'failed to create seller')
   }

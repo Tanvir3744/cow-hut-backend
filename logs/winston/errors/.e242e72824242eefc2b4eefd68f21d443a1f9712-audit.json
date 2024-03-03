@@ -109,6 +109,11 @@
             "date": 1709233851387,
             "name": "C:\\Users\\GWC IDB\\Desktop\\cow-hut Assigment\\logs\\winston\\errors\\university-2024-01-03-01-error.log",
             "hash": "11d0dd9142e5a8a62ddfc262894120eb5b312cb46c952a1d96c46e4c054a1d29"
+        },
+        {
+            "date": 1709238243169,
+            "name": "C:\\Users\\GWC IDB\\Desktop\\cow-hut Assigment\\logs\\winston\\errors\\university-2024-01-03-02-error.log",
+            "hash": "d4314562a905a42c564fe90049a4607670bdeaab11c6c2d521138aa4045282d6"
         }
     ],
     "hashType": "sha256"

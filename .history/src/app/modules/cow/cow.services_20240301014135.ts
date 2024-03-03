@@ -12,7 +12,6 @@ import { SortOrder } from 'mongoose'
 
 const createCow = async (payload: ICow): Promise<ICow | null> => {
   const result = await Cows.create(payload)
-  await result.populate('seller')
   if (!result) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'failed to create seller')
   }
@@ -22,7 +21,7 @@ const createCow = async (payload: ICow): Promise<ICow | null> => {
 }
 
 const getSingleCow = async (id: string,): Promise<ICow | null> => {
-  const result = await Cows.findById(id).populate("seller")
+  const result = await Cows.findById(id)
   if (!result) {
     throw new ApiError(BAD_REQUEST, 'Seller did not found')
   }
