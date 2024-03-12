@@ -1,7 +1,7 @@
 {
   "name": "cow-hut-assigment",
   "version": "1.0.0",
-  "description": "online buying and selling website",
+  "description": "",
   "main": "src/server.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",

@@ -2,7 +2,6 @@ import express, {Application,  Request, Response, NextFunction} from 'express';
 import cors from 'cors';
 import router from './routes';
 import httpStatus from 'http-status';
-import globalErrorHandler from './app/middlewares/globalErrorHandler';
 
 const app: Application = express();
 
@@ -10,7 +9,7 @@ const app: Application = express();
 app.use(cors({ origin: 'http://localhost:5000', credentials: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(globalErrorHandler)
+
 //application route
 /* app.use('/api/v1/users/', UserRoutes) */
 app.use('/api/v1/', router)
