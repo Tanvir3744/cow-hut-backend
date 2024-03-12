@@ -3,6 +3,8 @@ import cors from 'cors'
 import router from './routes'
 import httpStatus from 'http-status'
 import globalErrorHandler from './app/middlewares/globalErrorHandler'
+import mongoose from 'mongoose'
+import config from './config'
 
 const app: Application = express()
 
