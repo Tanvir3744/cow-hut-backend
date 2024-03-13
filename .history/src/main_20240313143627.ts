@@ -24,19 +24,6 @@ async function main() {
       console.log('database dont want to connect ', error)
   }
 
-
-   // if unhandled rejection happens then stop the server gracefully
-  process.on('unhandledRejection', error => {
-    if (server) {
-      server.close(() => {
-        console.error(error);
-        process.exit(0);
-      });
-    } else {
-      process.exit(1);
-    }
-  });
-
  
 }
 

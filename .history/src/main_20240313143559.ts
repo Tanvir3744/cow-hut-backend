@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import app from './app'
 import config from './config'
-import { Server } from "http";
+import {Server} from "http"
 
 
 process.on('uncaughtException', err => {
@@ -24,28 +24,7 @@ async function main() {
       console.log('database dont want to connect ', error)
   }
 
-
-   // if unhandled rejection happens then stop the server gracefully
-  process.on('unhandledRejection', error => {
-    if (server) {
-      server.close(() => {
-        console.error(error);
-        process.exit(0);
-      });
-    } else {
-      process.exit(1);
-    }
-  });
-
  
 }
-
-
-process.on("SIGTERM", () => {
-  console.log("sigterm recieved");
-  if (server) {
-    server.close()
-  }
-}) 
 export default main;
 
